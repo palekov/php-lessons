@@ -1,12 +1,40 @@
 <?php
-	$books= array("451° по Фаренгейту", "Шантарам", "1984", "Мастер и Маргарита", 
-"Три товарища","Портрет Дориана Грея", "Вино из одуванчиков", "Цветы для Элджернона",
-"Над пропастью во ржи", "Маленький принц", "Анна Каренина", "Сто лет одиночества",
-"Тень горы", "Атлант расправил плечи");
-	
-	echo "<ol>";
-	for ( $i = 0; $i < count($books); $i++ ) {
-		echo "<li> $books[$i] </li>";
+	function greeting($name, $day) {
+
+		$workDay = "Хорошего и продуктивного рабочего дня!";
+		$weekEnd = "Желаю вам хорошо отдохнуть в этот день!";
+
+		echo "Привет $name! ";
+
+		switch ( $day ) {
+			case '1':
+				echo $workDay;
+				break;			
+			case '2':
+				echo $workDay;
+				break;
+			case '3':
+				echo $workDay;
+				break;
+			case '4':
+				echo $workDay;
+				break;	
+			case '5':
+				echo $workDay;
+				break;							
+			case '6':
+				echo $weekEnd;
+				break;
+			case '7':
+				echo $weekEnd;
+				break;
+			default:
+				echo "Нет такого дня недели!";
+		}	
+		echo "<br>";
 	}
-	echo "</ol>";
+
+	greeting("Alexander", 4);
+	greeting("Palekov", 7);
+	greeting("Sashkus", 9);	
 ?>
