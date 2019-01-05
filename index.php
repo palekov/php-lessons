@@ -1,12 +1,32 @@
-<?php
-	$books= array("451° по Фаренгейту", "Шантарам", "1984", "Мастер и Маргарита", 
-"Три товарища","Портрет Дориана Грея", "Вино из одуванчиков", "Цветы для Элджернона",
-"Над пропастью во ржи", "Маленький принц", "Анна Каренина", "Сто лет одиночества",
-"Тень горы", "Атлант расправил плечи");
-	
-	echo "<ol>";
-	for ( $i = 0; $i < count($books); $i++ ) {
-		echo "<li> $books[$i] </li>";
+<?php 
+
+echo "<strong>_POST array:</strong> <br>";
+print_r($_POST);
+echo "<br><br><br>";
+
+if (!empty($_POST)) {
+
+	$message = "Вам пришло новое сообщение с сайта: \n " 
+	. "Имя отправителя: " . $_POST['userName'] . "\n"
+	. "Email отправителя: " .  $_POST['userEmail'] . "\n"
+	. "Сообщение: \n  " . $_POST['message'];
+
+	$headers = "From: info@webcademy.ru";
+
+	$resultMail = mail("palekov-2011@mail.ru", "Сообщение с сайта", $message, $headers );
+
+	if ( $resultMail ) {
+		echo "Форма отправлена успешно!";
+	} else {
+		echo "Форма не отправлена...";
 	}
-	echo "</ol>";
+}
+
 ?>
+
+<form action="index.php" method="post" >
+	<input type="text" name="userName" placeholder="Ваше имя"><br>
+	<input type="text" name="userEmail" placeholder="Ваш Email"><br>
+	<textarea name="message" id="" cols="30" rows="10" placeholder="Сообщение"></textarea><br>
+	<input type="submit" value="Отправить форму!">
+</form>
